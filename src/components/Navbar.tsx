@@ -1,19 +1,20 @@
-import React from 'react';
+import styled from "@emotion/styled";
+import React from "react";
 
-const navBarStyle = {
-  color: 'white',
-  height: '10vh',
-  padding: '20px',
-  background: 'black',
-  fontWeight: 'bold',
-  display: 'flex',
-  alignItems: 'center',
-  justifyContent: 'center',
-  fontSize: '24px',
-};
+const NavBarStyle = styled.div({
+  color: "white",
+  height: "10vh",
+  padding: "20px",
+  background: "black",
+  fontWeight: "bold",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontSize: "24px",
+});
 
 function Navbar() {
-  return <div style={navBarStyle}>My Fabulous Store</div>;
+  return <NavBarStyle>My Fabulous Store</NavBarStyle>;
 }
 
 export default Navbar;

@@ -6,8 +6,23 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import {useContext} from "react";
-import {ProductContext, ProductDetails} from "./Dashboard";
+import { useContext } from "react";
+import { ProductContext, ProductDetails } from "./Dashboard";
+import styled from "@emotion/styled";
+
+interface styledProps {
+  maxWidth: string;
+  whiteSpace?: string;
+  overflow?: string;
+  textOverflow?: string;
+}
+
+const DivBox = styled.div<styledProps>`
+  max-width: ${(props) => props.maxWidth};
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
 
 export default function BasicTable() {
   const productOptions: ProductDetails[] = useContext(ProductContext);
@@ -30,15 +45,11 @@ export default function BasicTable() {
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                <div style={{ maxWidth: 300, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                  {row.title}
-                </div>
+                <DivBox maxWidth={"300px"}>{row.title}</DivBox>
               </TableCell>
               <TableCell align="right">{row.price}</TableCell>
               <TableCell align="right">
-                <div style={{ maxWidth: 500, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-                  {row.description}
-                </div>
+                <DivBox maxWidth={"500px"}>{row.description}</DivBox>
               </TableCell>
               <TableCell align="right">{row.rating.rate}</TableCell>
             </TableRow>
