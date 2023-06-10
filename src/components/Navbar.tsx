@@ -10,7 +10,7 @@ const NavBarStyle = styled.div({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  fontSize: "24px",
+  fontSize: "35px",
 });
 
 function Navbar() {

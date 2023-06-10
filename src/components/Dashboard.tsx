@@ -118,6 +118,7 @@ const Dashboard = () => {
     if (category) {
       fetchProductOptions();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category, barGraphYAxisCriteria]);
 
   const initOrUpdateHighChart = (productOptions: ProductDetails[]) => {
@@ -208,7 +209,7 @@ const Dashboard = () => {
           </IconButton>
         </div>
 
-        {(!completeProductDetails && category) && (
+        {!completeProductDetails && category && (
           <div style={{ display: "flex", marginTop: "10px" }}>
             <FormControl fullWidth>
               <InputLabel id="select-critera">Y axis criteria</InputLabel>
@@ -233,7 +234,7 @@ const Dashboard = () => {
               {completeProductDetails.title}
             </h2>
             <div style={{ display: "flex", width: "100%" }}>
-              <div>
+              <div style={{ textAlign: "start" }}>
                 <div>
                   <p>{category.toUpperCase()}</p>
                   <p>SKU: {completeProductDetails.rating.count}</p>
@@ -242,20 +243,22 @@ const Dashboard = () => {
               </div>
               <div style={{ flex: 1, alignItems: "start" }}>
                 <img
-                  height={"70px"}
-                  width={"70px"}
+                  height={"100px"}
+                  width={"100px"}
                   src={completeProductDetails.image}
-                  alt="Product Image"
+                  alt="Product"
                 />
               </div>
             </div>
-            <p>{completeProductDetails.description}</p>
+            <p style={{ textAlign: "start" }}>
+              {completeProductDetails.description}
+            </p>
           </div>
         ) : category ? (
           <>
             <ProductContext.Provider value={productOptions}>
               <HighchartsReact highcharts={Highcharts} options={options} />
-              <Table/>
+              <Table />
             </ProductContext.Provider>
           </>
         ) : (
